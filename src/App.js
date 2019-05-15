@@ -1,39 +1,16 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 
-import Todo from './components/TodoComponents/Todo';
+// import Todo from './components/TodoComponents/Todo';
 // import TodoForm from './components/TodoComponents/TodoForm';
-// import TodoList from './components/TodoComponents/TodoList';
-
-const testData = [
-  {
-    task: 'Organize Garage',
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: 1528817084358,
-    completed: false
-  }
-];
-
-// function App() {
-//   return (
-//     <div className="app-container">
-//       <Todo />
-//       {/* <TodoForm />
-//       <TodoList /> */}
-//     </div>
-//   );
-// }
+import TodoList from './components/TodoComponents/TodoList';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todoList: testData,
-      task: '',
+      todoList: ['get groceries', 'take dog to the vet', 'mow the lawn', 'test task item'],
+      tasks: '',
       id: '',
       completed: ''
     };
@@ -49,9 +26,13 @@ class App extends React.Component {
     return(
       <div className="app-container">
         <h1>Test from app-container!</h1>
-        {this.state.todoList.map(taskItem => {
-          <Todo task={taskItem} />
-        })}
+        {/* <Todo task={this.state.todoList} /> */}
+        {/* <ul className="todo-container">
+          {this.state.todoList.map(taskItem => (
+            <Todo task={taskItem} />
+          ))}
+        </ul> */}
+        <TodoList list={this.state.todoList} />
       </div>
     );
   }

@@ -6,6 +6,17 @@
 //element in the array.
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Todo from './Todo';
+
+function TodoList(props) {
+  return(
+    <ul className="todo-container">
+      {props.list.map(taskItem => (
+      <Todo task={taskItem} />
+      ))}
+    </ul>
+  );
+}
+
+export default TodoList;
