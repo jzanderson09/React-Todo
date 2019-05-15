@@ -1,12 +1,26 @@
 import React from 'react';
 
+import './Todo.css';
 
-// class TodoForm extends React.Component {
-//     constructor() {
-//         super();
-//     }
+function TodoForm(props) {
+    return(
+        <form
+            name='taskAddForm'
+            onSubmit={props.addTaskHandler}
+            className='form'
+        >
+            <input
+                type='text'
+                placeholder='Enter new task here!'
+                name='task'
+                onChange={props.changeHandler}
+             />
+            <button className='addTodo-button' onClick={props.addTodo}>
+            Add to Task!</button>
+            <button className='clearCompleted-button'>
+            Clear Completed!</button>
+        </form>
+    );
+}
 
-//     render() {
-//         return()
-//     }
-// }
+export default TodoForm;
