@@ -8,16 +8,18 @@ function TodoForm(props) {
             name='taskAddForm'
             onSubmit={props.addTaskHandler}
             className='form'
+            autoComplete='off'
         >
             <input
                 type='text'
                 placeholder='Enter new task here!'
+                value={props.task}
                 name='task'
                 onChange={props.changeHandler}
              />
             <button className='addTodo-button' onClick={props.addTodo}>
             Add to Task!</button>
-            <button className='clearCompleted-button'>
+            <button className='clearCompleted-button' onClick={props.complete}>
             Clear Completed!</button>
         </form>
     );

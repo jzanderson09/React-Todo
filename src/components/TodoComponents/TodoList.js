@@ -5,8 +5,11 @@ import Todo from './Todo';
 function TodoList(props) {
   return (
     <ul className='todoList'>
-      {props.list.map(listItem => ( 
-        <Todo item={listItem.task} />
+      {props.list.map(listItem => (
+        <Todo 
+          item={listItem.task}
+          clickCompleted={props.clickCompleted}
+        />
       ))}
     </ul>
   );

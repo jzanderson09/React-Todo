@@ -10,57 +10,79 @@ class App extends React.Component {
     this.state = {
       todoList: [
         {
-        task: 'laundry',
-        id: '',
+        task: 'Organize Garage',
+        id: '1528817077286',
         completed: false
         },
         {
-          task: 'homework',
-          id: '',
+          task: 'Bake Cookies',
+          id: '1528817084358',
           completed: false
         },
-        {
-          task: 'walk the dog',
-          id: '',
-          completed: false
-        }
       ],
       task: ''
     };
   }
 
-  //event Handlers:
+  //Event Handlers:
   changeHandler = event => {
-    this.setState({ [event.target.task]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   addTodo = event => {
     event.preventDefault();
-    let newId = Date.now();
     let newTask = {
       task: this.state.task,
-      id: newId,
+      id: Date.now(),
       completed: false
     };
     this.setState({
-      task: [...this.state.todoList, newTask]
-    });
+      todoList: [...this.state.todoList, newTask],
+      task: ''
+      });
   };
 
+  //For strikethrough styling:
+  handleClickCompleted = event => {
+    if (event.target.className !== 'completed') {
+      event.target.className = 'completed';
+    }
+    else {
+      event.target.className = 'newTask';
+    }
+  };
+
+  // handleComplete = event => {
+  // }
+
+  clearCompleted = event => {
+    event.preventDefault();
+    const completedTasks = document.querySelectorAll('.completed');
+    const taskList = document.querySelector('.todoList');
+    console.log(taskList);
+    console.log(this.state.todoList);
+    // this.todoList.forEach((listObj) => {
+    //   console.log(this.todoList);
+    // } );
+    completedTasks.forEach(task => taskList.removeChild(task));
+  }
 
   render() {
-    console.log(this.state.todoList);
     return(
       <div className="app-container">
         <h1>Todo List: MVP</h1>
         <div className="todoList-container">
-          <TodoList list={this.state.todoList} />
+          <TodoList 
+            list={this.state.todoList} 
+            clickCompleted={this.handleClickCompleted}
+          />
         </div>
         <div className="todoForm-container">
           <TodoForm 
-            task={this.state.todoList}
             addTodo={this.addTodo}
             changeHandler={this.changeHandler}
+            task={this.state.task}
+            complete={this.clearCompleted}
           />
         </div>
       </div>
