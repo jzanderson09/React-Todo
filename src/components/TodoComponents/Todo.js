@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Todo = props => <li className="newTask" onClick={props.clickCompleted}>{props.item}</li>
+function Todo (props) {
+    return (
+        <li className="newTask" onClick={props.clickCompleted}>{props.item.task}</li>
+    );
+}
 
 export default Todo;
 

@@ -7,7 +7,7 @@ function TodoList(props) {
     <ul className='todoList'>
       {props.list.map(listItem => (
         <Todo 
-          item={listItem.task}
+          item={listItem}
           clickCompleted={props.clickCompleted}
         />
       ))}

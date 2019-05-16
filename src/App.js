@@ -52,18 +52,10 @@ class App extends React.Component {
     }
   };
 
-  // handleComplete = event => {
-  // }
-
   clearCompleted = event => {
     event.preventDefault();
     const completedTasks = document.querySelectorAll('.completed');
     const taskList = document.querySelector('.todoList');
-    console.log(taskList);
-    console.log(this.state.todoList);
-    // this.todoList.forEach((listObj) => {
-    //   console.log(this.todoList);
-    // } );
     completedTasks.forEach(task => taskList.removeChild(task));
   }
 
