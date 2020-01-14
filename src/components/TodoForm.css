@@ -1,11 +1,15 @@
-.TodoForm-container {
-
+button {
+    background: gray;
+    border-radius: 10%;
+    width: 15vh;
+    height: 5vh;
+    margin: 1%;
 }
 
 .TodoForm-container form input {
     border: 1px solid black;
 }
 
-.TodoForm-container form button {
-    background: gray;
+.TodoForm-container .clear-completed {
+    background: red;
 }

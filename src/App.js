@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
-
+import dummyData from './dummyData';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
-const dummyData = [
-  {
-    task: 'Organize Garage',
-    id: Date.now()*100,
-    completed: false
-  },
-  {
-    task: 'Bake Cookies',
-    id: Date.now()*50,
-    completed: false
-  },
-];
 
 class App extends Component {
   constructor() {
@@ -36,13 +24,22 @@ class App extends Component {
     console.log(newTodoList);
   };
 
+  clearCompleted = () => {
+    const updatedTodoList = this.state.todoList.filter(taskObj => taskObj.completed === false);
+    if (!(this.state.todoList.length === updatedTodoList.length)) {
+      if (window.confirm('Are you sure you want to clear your completed todo items?') === true) {
+        this.setState({ todoList: updatedTodoList });
+      }
+    }
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <h3>Todo List:</h3>
         <TodoList todoList={this.state.todoList} toggleCompleted={this.toggleCompleted} />
-        <TodoForm addTodoItem={this.addTodoItem} />
+        <TodoForm addTodoItem={this.addTodoItem} clearCompleted={this.clearCompleted} />
       </div>
     );
   }

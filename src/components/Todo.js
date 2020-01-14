@@ -20,7 +20,7 @@ const Todo = props => {
 
     return (
         <div className={task}>
-            <p onClick={completeTask} className={itemState}>Todo item: {props.todoItem.task}</p>
+            <p onClick={completeTask} className={itemState}>{props.todoItem.task}</p>
         </div>
     );
 };

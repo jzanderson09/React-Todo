@@ -38,12 +38,13 @@ const TodoForm = props => {
                     name='task'
                     value={todo.task}
                     onChange={changeHandler}
-                    placeholder='I need to do this...'
+                    placeholder='I need to...'
                     autoComplete='off'
                 />
                 <button>Add Todo</button>
-                <button>Clear Completed</button>
             </form>
+            <button className='clear-completed' onClick={props.clearCompleted}>Clear Completed</button>
+
         </div>
     );
 };
