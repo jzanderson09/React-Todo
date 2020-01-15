@@ -9,6 +9,7 @@ const TodoForm = props => {
         setInput(event.target.value);
     };
 
+    // Checks for empty input before adding new task:
     const submitForm = event => {
         if (input === '') {
             event.preventDefault();
@@ -17,7 +18,6 @@ const TodoForm = props => {
         else {
             event.preventDefault();
             props.addTodoItem(input);
-            window.alert('Success:  New task added!');
             setInput('');
         }
     };

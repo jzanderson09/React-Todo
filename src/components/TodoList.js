@@ -3,6 +3,7 @@ import Todo from './Todo';
 import './TodoList.css';
 
 const TodoList = props => {
+    // Conditional rendering depending on quantity of tasks in todoList:
     if (props.todoList.length === 0) {
         return (
             <div className='TodoList-container'>
@@ -13,6 +14,9 @@ const TodoList = props => {
     }
     return (
         <div className='TodoList-container'>
+            <div className='selection-div'>
+            <button className={`select${props.allSelected ? ' all' : ''}`} onClick={props.selectAll}>√</button>
+            </div>
             {props.todoList.map(item => {
                 return (
                     <Todo 

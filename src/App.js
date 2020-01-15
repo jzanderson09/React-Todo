@@ -9,10 +9,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todoList: dummyData
+      todoList: dummyData,
+      allSelected: false
     }
   }
 
+  // Adds new task to todoList:
   addTodoItem = newTodoItem => {
     const newTodo = {
       id: Date.now()*367,
@@ -22,6 +24,7 @@ class App extends Component {
     this.setState({ todoList: [...this.state.todoList, newTodo] })
   };
 
+  // Allows tasks to be clicked and marked as completed:
   toggleCompleted = todoId => {
     const newState = {
       ...this.state,
@@ -38,15 +41,39 @@ class App extends Component {
     this.setState(newState);
   };
 
+  // Clears all completed tasks and removes from the todoList:
   clearCompleted = () => {
     const updatedTodoList = this.state.todoList.filter(taskObj => taskObj.completed === false);
     if (!(this.state.todoList.length === updatedTodoList.length)) {
       if (window.confirm('Are you sure you want to clear your completed items?')) {
-        this.setState({ todoList: updatedTodoList });
+        this.setState({ todoList: updatedTodoList, allSelected: false });
       }
     }
   };
 
+  // Marks all tasks as completed and updates todoList:
+  selectAll = () => {
+    if (this.state.allSelected) {
+      const cleared = this.state.todoList.map(taskObj => {
+        return {
+          ...taskObj,
+          completed: false
+        }
+      });
+      this.setState({ todoList: cleared, allSelected: false });
+    }
+    else {
+      const selected = this.state.todoList.map(taskObj => {
+        return {
+          ...taskObj,
+          completed: true
+        };
+      });
+      this.setState({ todoList: selected, allSelected: true });
+    }
+  }
+
+  // Removes completed tasks and updates todolist:
   clearSelected = () => {
     const clearedTodoList = this.state.todoList.map(taskObj => {
       return {
@@ -54,7 +81,7 @@ class App extends Component {
         completed: false
       };
     });
-    this.setState({ todoList: clearedTodoList });
+    this.setState({ todoList: clearedTodoList, allSelected: false });
   };
 
   render() {
@@ -64,13 +91,15 @@ class App extends Component {
         <h3>Todo List:</h3>
         <TodoList 
           todoList={this.state.todoList} 
-          toggleCompleted={this.toggleCompleted} 
+          toggleCompleted={this.toggleCompleted}
+          selectAll={this.selectAll}
+          allSelected={this.state.allSelected}
         />
         <TodoForm
           input={this.state.input}
           addTodoItem={this.addTodoItem} 
           clearCompleted={this.clearCompleted}
-          clearSelected={this.clearSelected} 
+          clearSelected={this.clearSelected}
         />
       </div>
     );

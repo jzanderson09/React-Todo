@@ -1,3 +1,7 @@
+h3 {
+    width: 100%;
+}
+
 .TodoList-container {
     border: 1px solid white;
     box-shadow: 10px 10px 10px black;
@@ -11,7 +15,22 @@
     align-items: center;
 }
 
-h3 {
+.TodoList-container .selection-div {
     width: 100%;
-    text-shadow: 10px black;
+    height: 5vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TodoList-container .selection-div .select {
+    width: 5%;
+    height: 4vh;
+    font-size: 0.7rem;
+    background: white;
+    color: black;
+}
+
+.TodoList-container .selection-div .all {
+    background: black;
+    color: white;
 }
