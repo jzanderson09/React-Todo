@@ -21,7 +21,18 @@ class App extends Component {
       task: newTodoItem,
       completed: false
     };
-    this.setState({ todoList: [...this.state.todoList, newTodo] })
+    const newState = {
+      ...this.state,
+      todoList: [...this.state.todoList, newTodo]
+    };
+    const selectionCheck =  newState.todoList.every(task => task.completed === true);
+    if (selectionCheck) {
+      newState.allSelected = true;
+    }
+    else {
+      newState.allSelected = false;
+    }
+    this.setState(newState);
   };
 
   // Allows tasks to be clicked and marked as completed:
@@ -41,7 +52,6 @@ class App extends Component {
       todoList: updatedList
     };
     const selectionCheck = newState.todoList.every(task => task.completed === true);
-    console.log(selectionCheck);
     if (selectionCheck) {
       newState.allSelected = true;
     }
