@@ -26,18 +26,28 @@ class App extends Component {
 
   // Allows tasks to be clicked and marked as completed:
   toggleCompleted = todoId => {
+    // maps through todolist to select/deselect corresponding task:
+    const updatedList = this.state.todoList.map(todoItem => {
+      if (todoItem.id === todoId) {
+        return {
+          ...todoItem,
+          completed: !todoItem.completed
+        };
+      }
+      return todoItem;
+    });
     const newState = {
       ...this.state,
-      todoList: this.state.todoList.map(todoItem => {
-        if (todoItem.id === todoId) {
-          return {
-            ...todoItem,
-            completed: !todoItem.completed
-          };
-        }
-        return todoItem;
-      })
+      todoList: updatedList
     };
+    const selectionCheck = newState.todoList.every(task => task.completed === true);
+    console.log(selectionCheck);
+    if (selectionCheck) {
+      newState.allSelected = true;
+    }
+    else {
+      newState.allSelected = false;
+    }
     this.setState(newState);
   };
 
