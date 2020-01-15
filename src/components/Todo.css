@@ -1,19 +1,13 @@
-.Todo-container {
+.item {
     border: 1px solid black;
+    background: darkred;
+    color: whitesmoke;
     box-shadow: 3px 3px 3px black;
     width: 15%;
     margin: 2% 0 2%;
-}
-
-.complete {
-    background: green;
-}
-
-.Todo-container .todo-item {
-    text-decoration: none;
     cursor: pointer;
 }
 
-.Todo-container .completed {
-    text-decoration: line-through;
+.completed {
+    background: green;
 }

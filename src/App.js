@@ -17,11 +17,19 @@ class App extends Component {
   };
 
   toggleCompleted = todoId => {
-    const itemIndex = this.state.todoList.findIndex(obj => obj.id === todoId);
-    const newTodoList = this.state.todoList;
-    newTodoList[itemIndex].completed = !newTodoList[itemIndex].completed;
-    this.setState({ todoList: newTodoList });
-    console.log(newTodoList);
+    const newState = {
+      ...this.state,
+      todoList: this.state.todoList.map(todoItem => {
+        if (todoItem.id === todoId) {
+          return {
+            ...todoItem,
+            completed: !todoItem.completed
+          };
+        }
+        return todoItem;
+      })
+    };
+    this.setState(newState);
   };
 
   clearCompleted = () => {

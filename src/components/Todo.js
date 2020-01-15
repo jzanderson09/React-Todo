@@ -1,26 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Todo.css';
 
 const Todo = props => {
-    const [task, setTask] = useState('Todo-container');
-    const [itemState, setItemState] = useState('todo-item');
-
-    const completeTask = event => {
-        event.preventDefault();
-        if (itemState === 'todo-item') {
-            setItemState('todo-item completed');
-            setTask('Todo-container complete');
-        }
-        else {
-            setItemState('todo-item');
-            setTask('Todo-container');
-        }
-        props.toggleCompleted(props.todoItem.id);
-    };
-
     return (
-        <div className={task}>
-            <p onClick={completeTask} className={itemState}>{props.todoItem.task}</p>
+        <div
+            onClick={event => props.toggleCompleted(props.item.id)}
+            className={`item${props.item.completed ? " completed" : ""}`}
+        >
+            <p>{props.item.task}</p>
         </div>
     );
 };
