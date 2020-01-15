@@ -2,33 +2,23 @@ import React, { useState } from 'react';
 import './TodoForm.css';
 
 const TodoForm = props => {
-    const [todo, setTodo] = useState({
-        task: '',
-        id: '',
-        completed: false
-    });
+    const [input, setInput] = useState('');
 
     const changeHandler = event => {
         event.preventDefault();
-        setTodo({
-            ...todo,
-            [event.target.name]: event.target.value
-        });
+        setInput(event.target.value);
     };
 
     const submitForm = event => {
-        event.preventDefault();
-        const newTodo = {
-            ...todo,
-            id: Date.now()*100
-        };
-        props.addTodoItem(newTodo);
-        setTodo({
-            task: '',
-            id: '',
-            completed: false
-        });
-        window.alert('Success:  New todo list item added!');
+        if (input === '') {
+            window.alert('Input field empty:  Please enter a new task!');
+        }
+        else {
+            event.preventDefault();
+            props.addTodoItem(input);
+            window.alert('Success:  New todo list item added!');
+            setInput('');
+        }
     };
 
     return (
@@ -36,7 +26,7 @@ const TodoForm = props => {
             <form onSubmit={submitForm}>
                 <input 
                     name='task'
-                    value={todo.task}
+                    value={input}
                     onChange={changeHandler}
                     placeholder='I need to...'
                     autoComplete='off'
@@ -44,7 +34,6 @@ const TodoForm = props => {
                 <button>Add Todo</button>
             </form>
             <button className='clear-completed' onClick={props.clearCompleted}>Clear Completed</button>
-
         </div>
     );
 };

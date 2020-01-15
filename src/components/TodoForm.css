@@ -1,15 +1,41 @@
 button {
     background: gray;
     border-radius: 10%;
+    box-shadow: 10px 10px 10px black;
     width: 15vh;
     height: 5vh;
     margin: 1%;
+    font-size: 1.3rem;
+}
+
+form {
+    width: 35%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    margin-left: 15%;
+}
+
+.TodoForm-container {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .TodoForm-container form input {
     border: 1px solid black;
+    border-radius: 10%;
+    box-shadow: 10px 10px 10px black;
+    width: 35%;
+    margin-right: 5%;
+    height: 4vh;
+    font-size: 1.3rem;
+    color: black;
 }
 
 .TodoForm-container .clear-completed {
     background: red;
+    align-self: center;
+    width: 15%;
+    margin-right: 20%;
 }
