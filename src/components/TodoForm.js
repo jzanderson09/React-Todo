@@ -11,12 +11,13 @@ const TodoForm = props => {
 
     const submitForm = event => {
         if (input === '') {
+            event.preventDefault();
             window.alert('Input field empty:  Please enter a new task!');
         }
         else {
             event.preventDefault();
             props.addTodoItem(input);
-            window.alert('Success:  New todo list item added!');
+            window.alert('Success:  New task added!');
             setInput('');
         }
     };
