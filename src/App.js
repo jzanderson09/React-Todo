@@ -47,16 +47,30 @@ class App extends Component {
     }
   };
 
+  clearSelected = () => {
+    const clearedTodoList = this.state.todoList.map(taskObj => {
+      return {
+        ...taskObj,
+        completed: false
+      };
+    });
+    this.setState({ todoList: clearedTodoList });
+  };
+
   render() {
     return (
       <div className='App-container'>
         <h2>Welcome to your Todo App!</h2>
         <h3>Todo List:</h3>
-        <TodoList todoList={this.state.todoList} toggleCompleted={this.toggleCompleted} />
+        <TodoList 
+          todoList={this.state.todoList} 
+          toggleCompleted={this.toggleCompleted} 
+        />
         <TodoForm
           input={this.state.input}
           addTodoItem={this.addTodoItem} 
-          clearCompleted={this.clearCompleted} 
+          clearCompleted={this.clearCompleted}
+          clearSelected={this.clearSelected} 
         />
       </div>
     );

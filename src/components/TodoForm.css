@@ -2,10 +2,24 @@ button {
     background: gray;
     border-radius: 10%;
     box-shadow: 10px 10px 10px black;
-    width: 15vh;
+    width: 20vh;
     height: 5vh;
     margin: 1%;
     font-size: 1.3rem;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    box-shadow: 2px 2px 15px gray;
+    transition: all 0.1s ease-in-out;
+}
+
+button:active {
+    transform: translateY(10px);
 }
 
 form {
@@ -14,7 +28,7 @@ form {
     display: flex;
     justify-content: space-evenly;
     align-items: baseline;
-    margin-left: 15%;
+    margin-left: 5%;
 }
 
 .TodoForm-container {
@@ -33,9 +47,20 @@ form {
     color: black;
 }
 
+.TodoForm-container form .add-todo {
+    margin-left: 5%;
+}
+
 .TodoForm-container .clear-completed {
     background: red;
     align-self: center;
     width: 15%;
-    margin-right: 20%;
+    margin-right: 5%;
+}
+
+.TodoForm-container .clear-selected {
+    background: green;
+    align-self: center;
+    width: 15%;
+    margin-right: 2%; 
 }

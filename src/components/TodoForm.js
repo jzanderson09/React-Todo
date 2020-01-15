@@ -32,9 +32,10 @@ const TodoForm = props => {
                     placeholder='I need to...'
                     autoComplete='off'
                 />
-                <button>Add Todo</button>
+                <button className='add-todo'>Add Todo</button>
             </form>
             <button className='clear-completed' onClick={props.clearCompleted}>Clear Completed</button>
+            <button className='clear-selected' onClick={props.clearSelected}>Clear Selected</button>
         </div>
     );
 };
