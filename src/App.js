@@ -10,7 +10,8 @@ class App extends Component {
     super();
     this.state = {
       todoList: dummyData,
-      allSelected: false
+      allSelected: false,
+      search: ''
     }
   }
 
@@ -97,8 +98,7 @@ class App extends Component {
   render() {
     return (
       <div className='App-container'>
-        <h2 className='header-text'>Welcome to your Todo App!</h2>
-        <h3>Todo List:</h3>
+        <h2 className='header-text'>Your Todo List</h2>
         <TodoList 
           todoList={this.state.todoList} 
           toggleCompleted={this.toggleCompleted}

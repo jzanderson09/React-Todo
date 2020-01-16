@@ -12,6 +12,13 @@ const TodoList = props => {
         </div>
         );
     }
+    else if (props.search && props.todo) {
+        return (
+            <div className='TodoList-container'>
+
+            </div>
+        );
+    }
     return (
         <div className='TodoList-container'>
             <div className='selection-div'>
