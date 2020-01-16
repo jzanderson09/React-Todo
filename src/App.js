@@ -26,12 +26,7 @@ class App extends Component {
       todoList: [...this.state.todoList, newTodo]
     };
     const selectionCheck =  newState.todoList.every(task => task.completed === true);
-    if (selectionCheck) {
-      newState.allSelected = true;
-    }
-    else {
-      newState.allSelected = false;
-    }
+    newState.allSelected = selectionCheck;
     this.setState(newState);
   };
 
@@ -52,12 +47,7 @@ class App extends Component {
       todoList: updatedList
     };
     const selectionCheck = newState.todoList.every(task => task.completed === true);
-    if (selectionCheck) {
-      newState.allSelected = true;
-    }
-    else {
-      newState.allSelected = false;
-    }
+    newState.allSelected = selectionCheck;
     this.setState(newState);
   };
 
@@ -65,7 +55,7 @@ class App extends Component {
   clearCompleted = () => {
     const updatedTodoList = this.state.todoList.filter(taskObj => taskObj.completed === false);
     if (!(this.state.todoList.length === updatedTodoList.length)) {
-      if (window.confirm('Are you sure you want to clear your completed items?')) {
+      if (window.confirm('Are you sure you want to clear your completed item(s)?')) {
         this.setState({ todoList: updatedTodoList, allSelected: false });
       }
     }
@@ -107,7 +97,7 @@ class App extends Component {
   render() {
     return (
       <div className='App-container'>
-        <h2>Welcome to your Todo App!</h2>
+        <h2 className='header-text'>Welcome to your Todo App!</h2>
         <h3>Todo List:</h3>
         <TodoList 
           todoList={this.state.todoList} 
