@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import dummyData from './dummyData';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
-import './App.css';
+import './App.scss';
 
 // Adding comments so I can push to the branch!
 

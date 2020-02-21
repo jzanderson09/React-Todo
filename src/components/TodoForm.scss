@@ -1,0 +1,110 @@
+@import '../breakpoints.scss';
+
+@mixin mobileButtons {
+    width: 80%;
+    display: block;
+    font-size: 1rem;
+}
+
+* {
+    @media(max-width: $mobile) {
+        font-size: .8rem;
+    }
+}
+
+.TodoForm-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    @media(max-width: $mobile) {
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        width: 35%;
+        padding: 2%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: baseline;
+        margin-left: 5%;
+
+        @media(max-width: $mobile) {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            border: 1px solid black;
+            border-radius: 10%;
+            box-shadow: 10px 10px 10px black;
+            width: 35%;
+            margin-right: 5%;
+            height: 4vh;
+            font-size: 1.3rem;
+            color: black;
+
+            @media(max-width: $mobile) {
+                width: 80%;
+            }
+        }
+
+        .add-todo {
+            margin-left: 5%;
+
+            @media(max-width: $mobile) {
+                width: 80%;
+                margin-right: 10%;
+            }
+        }
+    }
+
+    button {
+        background: gray;
+        border-radius: 10%;
+        box-shadow: 10px 10px 10px black;
+        width: 20vh;
+        height: 5vh;
+        margin: 1%;
+        font-size: 1.3rem;
+        cursor: pointer;
+    
+        &:focus {
+            outline: none;
+        }
+    
+        &:hover {
+            box-shadow: 2px 2px 15px gray;
+            transition: all 0.1s ease-in-out;
+        }
+    
+        &:active {
+            transform: translateY(10px);
+        }
+    }
+    
+    .clear-completed {
+        background: red;
+        align-self: center;
+        width: 15%;
+        margin-right: 5%;
+
+        @media(max-width: $mobile) {
+            @include mobileButtons;
+        }
+    }
+
+    .clear-selected {
+        background: green;
+        align-self: center;
+        width: 15%;
+        margin-right: 2%; 
+
+        @media(max-width: $mobile) {
+            @include mobileButtons;
+        }
+    }
+}

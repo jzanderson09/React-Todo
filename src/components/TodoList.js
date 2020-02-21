@@ -1,6 +1,6 @@
 import React from 'react';
 import Todo from './Todo';
-import './TodoList.css';
+import './TodoList.scss';
 
 const TodoList = props => {
     // Conditional rendering depending on quantity of tasks in todoList:
@@ -10,13 +10,6 @@ const TodoList = props => {
                 <h3>You have no current tasks!</h3>
                 <h3>Please enter a new task to build your list!</h3>
         </div>
-        );
-    }
-    else if (props.search && props.todo) {
-        return (
-            <div className='TodoList-container'>
-
-            </div>
         );
     }
     return (

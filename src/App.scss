@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+// Media Query breakpoints:
+@import './breakpoints.scss';
 
 * {
     text-align: center;
@@ -10,6 +12,24 @@ h1, h2, h3, h4, h5 {
     color: white;
 }
 
+h2 {
+    @media(max-width: $mobile) {
+        font-size: 1.5rem;
+    }
+}
+
+h3 {
+    @media(max-width: $mobile) {
+        font-size: 1.2rem;
+    }
+}
+
+p {
+    @media(max-width: $mobile) {
+        font-size: 1rem;
+    }
+}
+
 .App-container {
     border-radius: 1%;
     box-shadow: 10px 10px 10px black;
@@ -19,8 +39,14 @@ h1, h2, h3, h4, h5 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
 
-.App-container .header-text {
-    padding: 2% 0 0;
+    @media(max-width: $mobile) {
+        font-size: .8rem;
+        height: 100vh;
+        width: auto;
+    }
+
+    .header-text {
+        padding: 2% 0 0;
+    }
 }
