@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+import './TodoForm.css';
+
+const TodoForm = props => {
+    const [input, setInput] = useState('');
+
+    const changeHandler = event => {
+        event.preventDefault();
+        setInput(event.target.value);
+    };
+
+    // Checks for empty input before adding new task:
+    const submitForm = event => {
+        if (input === '') {
+            event.preventDefault();
+            window.alert('Input field empty:  Please enter a new task!');
+        }
+        else {
+            event.preventDefault();
+            props.addTodoItem(input);
+            setInput('');
+        }
+    };
+
+    return (
+        <div className='TodoForm-container'>
+            <form onSubmit={submitForm}>
+                <input 
+                    name='task'
+                    value={input}
+                    onChange={changeHandler}
+                    placeholder='I need to...'
+                    autoComplete='off'
+                />
+                <button className='add-todo'>Add Todo</button>
+            </form>
+            <button className='clear-completed' onClick={props.clearCompleted}>Clear Completed</button>
+            <button className='clear-selected' onClick={props.clearSelected}>Clear Selected</button>
+        </div>
+    );
+};
+
+export default TodoForm;
